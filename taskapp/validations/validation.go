@@ -105,4 +105,29 @@ func ValidateDateFormat(dateToValidate string) bool {
 		return false
 	}
 
+func ValidateAddTaskInput(logger *logrus.Entry, taskInputInfo models.AddTaskInput)(error) {
+
+	if taskInputInfo.Title == "" {
+		return system.InvalidTitleErr
+
+	} else if taskInputInfo.ScheduledOn == "" {
+
+		return system.InvalidScheduledOnErr
+
+	} else if taskInputInfo.Description == "" {
+
+		return system.InvalidDescriptionErr
+
+	} /*else if !ValidateDateFormat(taskInputInfo.ScheduledOn) {
+		return system.InvalidDateTimeFormatErr
+	}*/
+	_, err := time.Parse(system.CUSTOM_DATE_FORMAT, taskInputInfo.ScheduledOn)
+	if err != nil {
+		return system.InvalidDateFormatErr
+	}
+	return nil
+}
+
+
+
 
