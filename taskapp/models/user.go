@@ -3,6 +3,12 @@ package models
 import "time"
 
 
+type AddTaskInput struct {
+	Title 		  string   			`json:"title" bson:"title"`
+	ScheduledOn 	  string			`json:"scheduledOn" bson:"scheduledOn"`
+	Description       string			`json:"description" bson:"description"`
+
+}
 
 type Task struct {
 	Id		  string       			`json:"_id" bson:"_id" `
