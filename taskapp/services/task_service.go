@@ -9,7 +9,7 @@ import (
 	"github.com/spf13/viper"
 	"github.com/streadway/amqp"
 	"github.com/tb/task-logger/common-packages/system"
-	cache "github.com/tb/task-logger/taskapp/cache"
+	
 	"github.com/tb/task-logger/taskapp/models"
 	"github.com/tb/task-logger/taskapp/validations"
 
@@ -44,11 +44,6 @@ func AddTask(logger *logrus.Entry, createTaskInput models.AddTaskInput, emailId 
 	}
 
 	fmt.Println("_id", taskObj.Id)
-
-//cache.NewRedisCache("127.0.0.1", 0, system.REDIS_DEFAULT_EXPIRATION_TIME).Flush("")
-	client := cache.NewRedisCache("127.0.0.1", 0, system.REDIS_DEFAULT_EXPIRATION_TIME)
-
-	client.Set(system.TASKS_COLLECTION+ ":" + taskObj.Id, &taskObj)
 
 	collectionName := system.TASKS_COLLECTION
 	databaseName := system.GetDatabaseName(collectionName)
