@@ -19,14 +19,10 @@ type Controller struct {
 	TaskController
 }
 
-var (
-	taskService services.TaskService
-	taskCache   cache.TaskCache
-)
+
 
 type TaskController interface {
-	TaskDetails(c web.C, w http.ResponseWriter, r *http.Request, logger *log.Entry) ([]byte, error)
-	ListTask(c web.C, w http.ResponseWriter, r *http.Request, logger *log.Entry) ([]byte, error)
+
 	AddTask(c web.C, w http.ResponseWriter, r *http.Request, logger *log.Entry) ([]byte, error)
 }
 
