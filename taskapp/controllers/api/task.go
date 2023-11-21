@@ -30,12 +30,6 @@ type TaskController interface {
 	AddTask(c web.C, w http.ResponseWriter, r *http.Request, logger *log.Entry) ([]byte, error)
 }
 
-func NewPostController(service services.TaskService, cache cache.TaskCache) TaskController {
-	taskService = service
-	taskCache = cache
-	return &Controller{}
-}
-
 func (controller *Controller) AddTask( c web.C, w http.ResponseWriter, r *http.Request, logger *log.Entry) ([]byte, error) {
 	decoder := json.NewDecoder(r.Body)
 	var addTaskInput models.AddTaskInput
