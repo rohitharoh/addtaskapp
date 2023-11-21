@@ -10,3 +10,12 @@ goji is used as the framework.
 docker image is created and deployed on minikube.
 
 
+input to the app :
+
+{
+  "Title" :"internal meeting" 		
+	"ScheduledOn" : "02 Dec 2023"  
+	"Description" : "discussions on sprint planning"
+ }
+
+
